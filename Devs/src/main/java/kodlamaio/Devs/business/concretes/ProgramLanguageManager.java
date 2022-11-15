@@ -31,7 +31,7 @@ public class ProgramLanguageManager implements ProgramLanguageService {
 				throw new Exception("programming language cannot be empty");
 			}
 		}
-		
+
 		languageRepository.add(language);
 
 	}
@@ -39,7 +39,6 @@ public class ProgramLanguageManager implements ProgramLanguageService {
 	@Override
 	public void delete(ProgramLanguage language) {
 		languageRepository.delete(language);
-		
 
 	}
 
@@ -51,7 +50,14 @@ public class ProgramLanguageManager implements ProgramLanguageService {
 
 	@Override
 	public void fetchLanguageById(Integer integer) {
-		languageRepository.fetcLanguageById(integer);
+
+		List<ProgramLanguage> languages = languageRepository.getAll();
+
+		for (ProgramLanguage language : languages) {
+			if (language.getId() == integer) {
+				languageRepository.fetcLanguageById(integer);
+			}
+		} 
 
 	}
 
